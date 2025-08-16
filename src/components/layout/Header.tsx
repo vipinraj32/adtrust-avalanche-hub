@@ -28,15 +28,15 @@ export const Header = () => {
     bal ? `${Number(bal.formatted).toFixed(4)} ${bal.symbol}` : '0.0000 AVAX'
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b border-white/20 bg-white/10 dark:bg-white/5 backdrop-blur-xl">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="h-8 w-8 rounded-lg bg-gradient-to-r from-primary to-purple-500 flex items-center justify-center">
+          <Link to="/" className="flex items-center space-x-2 group">
+            <div className="h-8 w-8 rounded-lg bg-gradient-primary flex items-center justify-center shadow-glow group-hover:scale-110 transition-transform animate-float-slow">
               <span className="text-sm font-bold text-white">AT</span>
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-primary to-purple-500 bg-clip-text text-transparent">
+            <span className="text-xl font-bold bg-gradient-to-r from-slate-800 via-purple-600 to-pink-600 dark:from-white dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
               AdTrust
             </span>
           </Link>
@@ -47,10 +47,10 @@ export const Header = () => {
               <Link
                 key={item.name}
                 to={item.href}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
+                className={`text-sm font-medium transition-all hover:scale-105 ${
                   location.pathname === item.href
-                    ? 'text-primary'
-                    : 'text-muted-foreground'
+                    ? 'text-purple-600 dark:text-purple-400'
+                    : 'text-slate-600 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400'
                 }`}
               >
                 {item.name}
@@ -62,12 +62,12 @@ export const Header = () => {
           <div className="flex items-center space-x-4">
             {isConnected && address ? (
               <div className="hidden sm:flex items-center space-x-3">
-                <Card className="px-3 py-1.5 bg-gradient-card border-border/50">
+                <Card className="px-3 py-1.5 bg-white/10 dark:bg-white/5 backdrop-blur-md border-white/20 shadow-lg">
                   <div className="flex items-center space-x-2">
-                    <Wallet className="h-4 w-4 text-primary" />
+                    <Wallet className="h-4 w-4 text-purple-600 dark:text-purple-400" />
                     <div className="text-sm">
-                      <div className="font-medium">{formatAddress(address)}</div>
-                      <div className="text-xs text-muted-foreground">
+                      <div className="font-medium text-slate-800 dark:text-white">{formatAddress(address)}</div>
+                      <div className="text-xs text-slate-600 dark:text-slate-300">
                         {formatBalance(balance)}
                       </div>
                     </div>
@@ -77,7 +77,7 @@ export const Header = () => {
                   variant="outline"
                   size="sm"
                   onClick={() => disconnect()}
-                  className="hidden lg:flex"
+                  className="hidden lg:flex bg-white/10 dark:bg-white/5 border-white/30 hover:bg-white/20 backdrop-blur-md text-slate-700 dark:text-white"
                 >
                   <LogOut className="h-4 w-4" />
                 </Button>

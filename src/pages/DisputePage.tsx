@@ -154,12 +154,17 @@ const DisputePage = () => {
 
   if (!isConnected) {
     return (
-      <div className="min-h-screen bg-background">
-        <div className="container mx-auto px-4 py-20">
-          <Card className="max-w-md mx-auto">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-slate-900 dark:via-purple-900/20 dark:to-blue-900/20 relative overflow-hidden">
+        {/* Floating Background Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-10 left-10 w-32 h-20 bg-white/20 dark:bg-white/5 rounded-full blur-xl animate-float" />
+          <div className="absolute bottom-20 right-20 w-40 h-24 bg-purple-200/30 dark:bg-purple-400/10 rounded-full blur-xl animate-float-delayed" />
+        </div>
+        <div className="container mx-auto px-4 py-20 relative z-10">
+          <Card className="max-w-md mx-auto bg-white/10 dark:bg-white/5 backdrop-blur-md border-white/20 shadow-glow">
             <CardHeader className="text-center">
-              <CardTitle>Connect Your Wallet</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-slate-800 dark:text-white">Connect Your Wallet</CardTitle>
+              <CardDescription className="text-slate-600 dark:text-slate-300">
                 Connect your wallet to access dispute resolution
               </CardDescription>
             </CardHeader>
@@ -173,11 +178,19 @@ const DisputePage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-slate-900 dark:via-purple-900/20 dark:to-blue-900/20 relative overflow-hidden">
+      {/* Floating Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-1/4 w-28 h-16 bg-blue-200/30 dark:bg-blue-400/10 rounded-full blur-xl animate-float" />
+        <div className="absolute bottom-1/3 right-1/4 w-32 h-20 bg-purple-200/30 dark:bg-purple-400/10 rounded-full blur-xl animate-float-delayed" />
+      </div>
+
+      <div className="container mx-auto px-4 py-8 relative z-10">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">Dispute Resolution</h1>
-          <p className="text-muted-foreground">
+          <h1 className="text-3xl font-bold mb-2 bg-gradient-to-r from-slate-800 via-purple-600 to-pink-600 dark:from-white dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
+            Dispute Resolution
+          </h1>
+          <p className="text-slate-600 dark:text-slate-300">
             Manage campaign disputes and view resolution history
           </p>
         </div>

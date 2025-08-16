@@ -147,12 +147,17 @@ const InfluencerDashboard = () => {
 
   if (!isConnected) {
     return (
-      <div className="min-h-screen bg-background">
-        <div className="container mx-auto px-4 py-20">
-          <Card className="max-w-md mx-auto">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-slate-900 dark:via-purple-900/20 dark:to-blue-900/20 relative overflow-hidden">
+        {/* Floating Background Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-10 left-10 w-32 h-20 bg-white/20 dark:bg-white/5 rounded-full blur-xl animate-float" />
+          <div className="absolute bottom-20 right-20 w-40 h-24 bg-purple-200/30 dark:bg-purple-400/10 rounded-full blur-xl animate-float-delayed" />
+        </div>
+        <div className="container mx-auto px-4 py-20 relative z-10">
+          <Card className="max-w-md mx-auto bg-white/10 dark:bg-white/5 backdrop-blur-md border-white/20 shadow-glow">
             <CardHeader className="text-center">
-              <CardTitle>Connect Your Wallet</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-slate-800 dark:text-white">Connect Your Wallet</CardTitle>
+              <CardDescription className="text-slate-600 dark:text-slate-300">
                 Connect your wallet to access the Influencer Dashboard
               </CardDescription>
             </CardHeader>
@@ -166,60 +171,69 @@ const InfluencerDashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-slate-900 dark:via-purple-900/20 dark:to-blue-900/20 relative overflow-hidden">
+      {/* Floating Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-1/4 w-28 h-16 bg-blue-200/30 dark:bg-blue-400/10 rounded-full blur-xl animate-float" />
+        <div className="absolute bottom-1/3 right-1/4 w-32 h-20 bg-purple-200/30 dark:bg-purple-400/10 rounded-full blur-xl animate-float-delayed" />
+        <div className="absolute top-1/2 left-1/6 w-20 h-12 bg-pink-200/30 dark:bg-pink-400/10 rounded-full blur-xl animate-float-slow" />
+      </div>
+
+      <div className="container mx-auto px-4 py-8 relative z-10">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">Influencer Dashboard</h1>
-          <p className="text-muted-foreground">
+          <h1 className="text-3xl font-bold mb-2 bg-gradient-to-r from-slate-800 via-purple-600 to-pink-600 dark:from-white dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
+            Influencer Dashboard
+          </h1>
+          <p className="text-slate-600 dark:text-slate-300">
             Browse campaigns and manage your content partnerships
           </p>
         </div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <Card className="bg-gradient-card border-border/50">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-8">
+          <Card className="bg-white/10 dark:bg-white/5 backdrop-blur-md border-white/20 hover:scale-105 transition-all hover:shadow-glow group">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Wallet Balance</CardTitle>
-              <DollarSign className="h-4 w-4 text-muted-foreground" />
+              <CardTitle className="text-sm font-medium text-slate-800 dark:text-white">Wallet Balance</CardTitle>
+              <DollarSign className="h-4 w-4 text-green-600 dark:text-green-400 group-hover:animate-float" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">
+              <div className="text-2xl font-bold text-slate-800 dark:text-white">
                 {balance ? `${Number(balance.formatted).toFixed(4)} ${balance.symbol}` : '0.0000 AVAX'}
               </div>
-              <p className="text-xs text-muted-foreground">Available balance</p>
+              <p className="text-xs text-slate-600 dark:text-slate-300">Available balance</p>
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-card border-border/50">
+          <Card className="bg-white/10 dark:bg-white/5 backdrop-blur-md border-white/20 hover:scale-105 transition-all hover:shadow-glow group">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Active Campaigns</CardTitle>
-              <Clock className="h-4 w-4 text-muted-foreground" />
+              <CardTitle className="text-sm font-medium text-slate-800 dark:text-white">Active Campaigns</CardTitle>
+              <Clock className="h-4 w-4 text-orange-600 dark:text-orange-400 group-hover:animate-float" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{myCampaigns.length}</div>
-              <p className="text-xs text-muted-foreground">Currently working on</p>
+              <div className="text-2xl font-bold text-slate-800 dark:text-white">{myCampaigns.length}</div>
+              <p className="text-xs text-slate-600 dark:text-slate-300">Currently working on</p>
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-card border-border/50">
+          <Card className="bg-white/10 dark:bg-white/5 backdrop-blur-md border-white/20 hover:scale-105 transition-all hover:shadow-glow group">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total Earnings</CardTitle>
-              <TrendingUp className="h-4 w-4 text-muted-foreground" />
+              <CardTitle className="text-sm font-medium text-slate-800 dark:text-white">Total Earnings</CardTitle>
+              <TrendingUp className="h-4 w-4 text-purple-600 dark:text-purple-400 group-hover:animate-float" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">1,850 AVAX</div>
-              <p className="text-xs text-muted-foreground">All time earnings</p>
+              <div className="text-2xl font-bold text-slate-800 dark:text-white">1,850 AVAX</div>
+              <p className="text-xs text-slate-600 dark:text-slate-300">All time earnings</p>
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-card border-border/50">
+          <Card className="bg-white/10 dark:bg-white/5 backdrop-blur-md border-white/20 hover:scale-105 transition-all hover:shadow-glow group">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Completed</CardTitle>
-              <CheckCircle className="h-4 w-4 text-muted-foreground" />
+              <CardTitle className="text-sm font-medium text-slate-800 dark:text-white">Completed</CardTitle>
+              <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-400 group-hover:animate-float" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">12</div>
-              <p className="text-xs text-muted-foreground">Successfully completed</p>
+              <div className="text-2xl font-bold text-slate-800 dark:text-white">12</div>
+              <p className="text-xs text-slate-600 dark:text-slate-300">Successfully completed</p>
             </CardContent>
           </Card>
         </div>
