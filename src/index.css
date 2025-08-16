@@ -6,9 +6,10 @@
 
 @layer base {
   :root {
-    --background: 230 35% 7%;
+  /* Gradient background for light and dark mode, matching LandingPage */
+  --background: 222, 100%, 98%;
     --foreground: 213 31% 91%;
-
+    /* --background: 200 34% 89%; */
     --card: 230 25% 10%;
     --card-foreground: 213 31% 91%;
 

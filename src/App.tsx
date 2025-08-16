@@ -11,6 +11,7 @@ import AdvertiserDashboard from "./pages/AdvertiserDashboard";
 import InfluencerDashboard from "./pages/InfluencerDashboard";
 import DisputePage from "./pages/DisputePage";
 import NotFound from "./pages/NotFound";
+import Login from "./pages/Login";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = () => (
             <Route path="/influencer" element={<InfluencerDashboard />} />
             <Route path="/disputes" element={<DisputePage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="/login" element={<Login />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

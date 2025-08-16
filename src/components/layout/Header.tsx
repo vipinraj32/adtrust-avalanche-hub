@@ -28,15 +28,15 @@ export const Header = () => {
     bal ? `${Number(bal.formatted).toFixed(4)} ${bal.symbol}` : '0.0000 AVAX'
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/20 bg-white/10 dark:bg-white/5 backdrop-blur-xl">
+    <header className="sticky top-4 z-50 max-w-6xl w-full mx-auto border-b border-border bg-transparent backdrop-blur-xl shadow-lg rounded-3xl" style={{border: '1px solid rgba(255,255,255,0.12)'}}> 
       <div className="container mx-auto px-4">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-12 items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
-            <div className="h-8 w-8 rounded-lg bg-gradient-primary flex items-center justify-center shadow-glow group-hover:scale-110 transition-transform animate-float-slow">
-              <span className="text-sm font-bold text-white">AT</span>
+            <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center shadow-glow">
+              <span className="text-sm font-bold text-primary-foreground">AvaxTrust</span>
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-slate-800 via-purple-600 to-pink-600 dark:from-white dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
+            <span className="text-xl font-bold text-primary bg-clip-text text-transparent">
               AdTrust
             </span>
           </Link>
@@ -49,8 +49,8 @@ export const Header = () => {
                 to={item.href}
                 className={`text-sm font-medium transition-all hover:scale-105 ${
                   location.pathname === item.href
-                    ? 'text-purple-600 dark:text-purple-400'
-                    : 'text-slate-600 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400'
+                    ? 'text-primary'
+                    : 'text-muted-foreground hover:text-primary'
                 }`}
               >
                 {item.name}
@@ -60,14 +60,23 @@ export const Header = () => {
 
           {/* Wallet Info & Connect */}
           <div className="flex items-center space-x-4">
-            {isConnected && address ? (
+
+            {/* Instagram Login Button */}
+            <Button
+              className="bg-gradient-to-r from-pink-500 to-yellow-500 text-white font-semibold px-6 py-2 rounded-full shadow-md hover:from-pink-600 hover:to-yellow-600 transition-colors"
+              onClick={() => alert('Instagram login coming soon!')}
+            >
+              Sign in with Instagram
+            </Button>
+            {/* Only show wallet info and disconnect if connected, otherwise nothing (ConnectWallet removed) */}
+            {isConnected && address && (
               <div className="hidden sm:flex items-center space-x-3">
-                <Card className="px-3 py-1.5 bg-white/10 dark:bg-white/5 backdrop-blur-md border-white/20 shadow-lg">
+                <Card className="px-3 py-1.5 bg-secondary backdrop-blur-md border-border shadow-lg">
                   <div className="flex items-center space-x-2">
-                    <Wallet className="h-4 w-4 text-purple-600 dark:text-purple-400" />
+                    <Wallet className="h-4 w-4 text-primary" />
                     <div className="text-sm">
-                      <div className="font-medium text-slate-800 dark:text-white">{formatAddress(address)}</div>
-                      <div className="text-xs text-slate-600 dark:text-slate-300">
+                      <div className="font-medium text-foreground">{formatAddress(address)}</div>
+                      <div className="text-xs text-muted-foreground">
                         {formatBalance(balance)}
                       </div>
                     </div>
@@ -77,13 +86,11 @@ export const Header = () => {
                   variant="outline"
                   size="sm"
                   onClick={() => disconnect()}
-                  className="hidden lg:flex bg-white/10 dark:bg-white/5 border-white/30 hover:bg-white/20 backdrop-blur-md text-slate-700 dark:text-white"
+                  className="hidden lg:flex bg-secondary border-border hover:bg-secondary/80 backdrop-blur-md text-foreground"
                 >
                   <LogOut className="h-4 w-4" />
                 </Button>
               </div>
-            ) : (
-              <ConnectWallet />
             )}
 
             {/* Mobile menu button */}
