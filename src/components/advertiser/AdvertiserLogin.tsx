@@ -28,9 +28,13 @@ export default function AdvertiserLogin() {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: params.toString(),
       });
+      const data = await res.json();
       if (!res.ok) throw new Error( 'Login failed');
       // On success, set login state and go to advertiser dashboard
       localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('companyname',data.companyName);
+       localStorage.setItem('email', data.email);
+       localStorage.setItem('Adname', data.name);
       sessionStorage.setItem('isLoggedIn', 'true');
       setIsLoggedIn(true);
       navigate('/advertiser');

@@ -63,7 +63,7 @@ const AdvertiserSignup: React.FC = () => {
       const balance = await provider.getBalance(form.wallet);
       if (balance < minStake) {
         setError(
-          "Insufficient AVAX balance. You need at least 250 AVAX in your wallet to stake."
+          "Insufficient AVAX balance. You need at least 2.5 AVAX in your wallet to stake."
         );
         setLoading(false);
         return;
@@ -234,8 +234,8 @@ const AdvertiserSignup: React.FC = () => {
         )}
         <div className="text-xs text-blue-600 font-semibold max-w-xs text-center mt-2">
           Please connect your wallet to the{" "}
-          <span className="underline">Avalanche Fuji (testnet)</span> network for
-          testing. You must have at least 250 AVAX (testnet) in your wallet to
+          <span className="underline text-center">Avalanche Fuji (testnet)</span> network for
+          testing. You must have at least 2.5 AVAX (testnet) in your wallet to
           register as an advertiser. Gas fees apply.
         </div>
       </div>

@@ -37,18 +37,7 @@ const InfluencerDashboard = () => {
 
   // Mock campaigns data
   const activeCampaigns = [
-    {
-      id: 1,
-      title: "Summer Fashion Collection",
-      advertiser: "0x1234...5678",
-      viewsRequired: 50000,
-      payout: "500 AVAX",
-      duration: "30 days",
-      description: "Promote our new summer fashion line to young audiences aged 18-30",
-      targetAudience: "Fashion enthusiasts, 18-30",
-      deadline: "2024-02-15",
-      status: "Available"
-    },
+    
     {
       id: 2,
       title: "Crypto Trading Platform",
@@ -199,7 +188,7 @@ const InfluencerDashboard = () => {
               <TrendingUp className="h-4 w-4 text-purple-600 dark:text-purple-400 group-hover:animate-float" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-slate-800 dark:text-white">1,850 AVAX</div>
+              <div className="text-2xl font-bold text-slate-800 dark:text-white">1.5 AVAX</div>
               <p className="text-xs text-slate-600 dark:text-slate-300">All time earnings</p>
             </CardContent>
           </Card>
@@ -210,7 +199,7 @@ const InfluencerDashboard = () => {
               <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-400 group-hover:animate-float" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-slate-800 dark:text-white">12</div>
+              <div className="text-2xl font-bold text-slate-800 dark:text-white">1</div>
               <p className="text-xs text-slate-600 dark:text-slate-300">Successfully completed</p>
             </CardContent>
           </Card>
