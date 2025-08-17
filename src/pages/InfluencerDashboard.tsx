@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label'
 import { Badge } from '@/components/ui/badge'
 import { Textarea } from '@/components/ui/textarea'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { ConnectWallet } from '@/components/web3/ConnectWallet'
+
 import { 
   Search, 
   Eye, 
@@ -161,9 +161,7 @@ const InfluencerDashboard = () => {
                 Connect your wallet to access the Influencer Dashboard
               </CardDescription>
             </CardHeader>
-            <CardContent className="text-center">
-              <ConnectWallet />
-            </CardContent>
+            
           </Card>
         </div>
       </div>

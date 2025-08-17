@@ -1,0 +1,35 @@
+[
+  {
+    "inputs": [
+      { "internalType": "string", "name": "companyName", "type": "string" },
+      { "internalType": "string", "name": "advertiserName", "type": "string" },
+      { "internalType": "string", "name": "email", "type": "string" },
+      { "internalType": "string", "name": "requirement", "type": "string" },
+      { "internalType": "uint256", "name": "price", "type": "uint256" }
+    ],
+    "name": "createAd",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getAllAds",
+    "outputs": [
+      {
+        "components": [
+          { "internalType": "string", "name": "companyName", "type": "string" },
+          { "internalType": "string", "name": "advertiserName", "type": "string" },
+          { "internalType": "string", "name": "email", "type": "string" },
+          { "internalType": "string", "name": "requirement", "type": "string" },
+          { "internalType": "uint256", "name": "price", "type": "uint256" }
+        ],
+        "internalType": "struct AdPlatform.Ad[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]

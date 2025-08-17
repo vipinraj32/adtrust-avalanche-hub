@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { ConnectWallet } from '@/components/web3/ConnectWallet'
+
 import { 
   AlertTriangle, 
   Eye, 
@@ -168,9 +168,7 @@ const DisputePage = () => {
                 Connect your wallet to access dispute resolution
               </CardDescription>
             </CardHeader>
-            <CardContent className="text-center">
-              <ConnectWallet />
-            </CardContent>
+          
           </Card>
         </div>
       </div>

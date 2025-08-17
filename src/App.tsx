@@ -7,11 +7,13 @@ import { WagmiProvider } from "wagmi";
 import { config } from "@/lib/wagmi";
 import { Header } from "@/components/layout/Header";
 import LandingPage from "./pages/LandingPage";
-import AdvertiserDashboard from "./pages/AdvertiserDashboard";
+import AdvertiserDashboard from "./components/advertiser/AdvertiserDashboard";
 import InfluencerDashboard from "./pages/InfluencerDashboard";
 import DisputePage from "./pages/DisputePage";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
+import AdvertiserLogin from "./components/advertiser/AdvertiserLogin";
+import AdvertiserSignup from "./components/advertiser/AdvertiserSignup";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +27,8 @@ const App = () => (
           <Header />
           <Routes>
             <Route path="/" element={<LandingPage />} />
+            <Route path="/advertiser/login" element={<AdvertiserLogin />} />
+            <Route path="/advertiser/signup" element={<AdvertiserSignup />} />
             <Route path="/advertiser" element={<AdvertiserDashboard />} />
             <Route path="/influencer" element={<InfluencerDashboard />} />
             <Route path="/disputes" element={<DisputePage />} />
