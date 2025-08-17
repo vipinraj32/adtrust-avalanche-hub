@@ -6,6 +6,7 @@ const contractAddress = "0xd2a5bC10698FD955D1Fe6cb468a17809A08fd005"; // Replace
 
 const AdvertiserDashboard: React.FC = () => {
   const [companyName, setCompanyName] = useState("");
+  const [advertiserName, setAdvertiserName] = useState("");
   const [email, setEmail] = useState("");
   const [requirement, setRequirement] = useState("");
   const [price, setPrice] = useState("");
@@ -16,6 +17,7 @@ const AdvertiserDashboard: React.FC = () => {
 
   useEffect(() => {
     setCompanyName(localStorage.getItem("companyName") || "");
+    setAdvertiserName(localStorage.getItem("advertiserName") || "");
     setEmail(localStorage.getItem("email") || "");
   }, []);
 
@@ -30,7 +32,7 @@ const AdvertiserDashboard: React.FC = () => {
       setTxStatus("Waiting for MetaMask confirmation...");
       const tx = await contract.createAd(
         companyName,
-        companyName, // using companyName as advertiserName for demo
+        advertiserName,
         email,
         requirement,
         ethers.parseEther(price || "0")
@@ -72,6 +74,36 @@ const AdvertiserDashboard: React.FC = () => {
         <div className="text-center text-slate-600 dark:text-slate-300 mb-6">Email: {email}</div>
         <form onSubmit={handlePublish} className="space-y-6">
           <div>
+            <label className="block text-sm font-medium mb-1">Company Name</label>
+            <input
+              type="text"
+              value={companyName}
+              onChange={e => setCompanyName(e.target.value)}
+              className="w-full p-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white/60 dark:bg-slate-800/60 focus:outline-none focus:ring-2 focus:ring-primary"
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-1">Advertiser Name</label>
+            <input
+              type="text"
+              value={advertiserName}
+              onChange={e => setAdvertiserName(e.target.value)}
+              className="w-full p-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white/60 dark:bg-slate-800/60 focus:outline-none focus:ring-2 focus:ring-primary"
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-1">Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              className="w-full p-3 rounded-lg border border-slate-300 dark:border-slate-700 bg-white/60 dark:bg-slate-800/60 focus:outline-none focus:ring-2 focus:ring-primary"
+              required
+            />
+          </div>
+          <div>
             <label className="block text-sm font-medium mb-1">Requirement</label>
             <input
               type="text"
@@ -97,36 +129,34 @@ const AdvertiserDashboard: React.FC = () => {
           </button>
         </form>
         {txStatus && <div className="mt-4 text-center text-purple-700 dark:text-purple-300">{txStatus}</div>}
-        <button
-          className="mt-6 w-full py-2 rounded bg-gradient-to-r from-blue-500 to-green-500 text-white font-semibold hover:from-blue-600 hover:to-green-600 transition"
-          onClick={handleShowInfluencers}
-        >
-          {showInfluencers ? "Hide Influencer Details" : "Show Influencer Details"}
-        </button>
-        {showInfluencers && (
-          <div className="mt-6 bg-white/60 dark:bg-slate-800/60 rounded-lg p-4">
-            <h3 className="text-lg font-bold mb-2">Influencer Details (All Ads)</h3>
-            {loadingAds ? (
-              <div className="text-center text-gray-500">Loading ads from chain...</div>
-            ) : (
-              <ul className="space-y-2">
-                {ads.length === 0 ? (
-                  <div className="text-center text-gray-500">No ads found.</div>
-                ) : (
-                  ads.map((ad, idx) => (
-                    <li key={idx} className="border-b border-slate-200 dark:border-slate-700 pb-2">
-                      <div><span className="font-semibold">Company:</span> {ad.companyName}</div>
-                      <div><span className="font-semibold">Advertiser:</span> {ad.advertiserName}</div>
-                      <div><span className="font-semibold">Email:</span> {ad.email}</div>
-                      <div><span className="font-semibold">Requirement:</span> {ad.requirement}</div>
-                      <div><span className="font-semibold">Budget:</span> {ethers.formatEther(ad.price || 0)} AVAX</div>
-                    </li>
-                  ))
-                )}
-              </ul>
-            )}
-          </div>
-        )}
+        {/* My Ads Section */}
+        <div className="mt-8">
+          <h2 className="text-2xl font-bold mb-4">My Ads</h2>
+          {loadingAds ? (
+            <div className="text-center text-gray-500">Loading ads from chain...</div>
+          ) : (
+            <ul className="space-y-4">
+              {ads.filter(ad => ad.advertiserName === advertiserName).length === 0 ? (
+                <div className="text-center text-gray-500">No ads found.</div>
+              ) : (
+                ads.filter(ad => ad.advertiserName === advertiserName).map((ad, idx) => (
+                  <li key={idx} className="border rounded-lg p-4 bg-white/70 dark:bg-slate-800/70">
+                    <div><span className="font-semibold">Company:</span> {ad.companyName}</div>
+                    <div><span className="font-semibold">Advertiser:</span> {ad.advertiserName}</div>
+                    <div><span className="font-semibold">Email:</span> {ad.email}</div>
+                    <div><span className="font-semibold">Requirement:</span> {ad.requirement}</div>
+                    <div><span className="font-semibold">Budget:</span> {ethers.formatEther(ad.price || 0)} AVAX</div>
+                    <div className="flex gap-2 mt-2">
+                      <button className="px-3 py-1 rounded bg-yellow-400 text-white font-semibold hover:bg-yellow-500">Pause</button>
+                      <button className="px-3 py-1 rounded bg-blue-500 text-white font-semibold hover:bg-blue-600">Update</button>
+                      <button className="px-3 py-1 rounded bg-red-500 text-white font-semibold hover:bg-red-600">Delete</button>
+                    </div>
+                  </li>
+                ))
+              )}
+            </ul>
+          )}
+        </div>
       </div>
     </div>
   );

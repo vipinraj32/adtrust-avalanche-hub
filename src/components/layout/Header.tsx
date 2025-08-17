@@ -45,12 +45,12 @@ export const Header = () => {
 
           {/* Instagram Login Button & Mobile menu button */}
           <div className="flex items-center space-x-4">
-            <Button
+            <button
               className="bg-gradient-to-r from-pink-500 to-yellow-500 text-white font-semibold px-6 py-2 rounded-full shadow-md hover:from-pink-600 hover:to-yellow-600 transition-colors"
               onClick={() => alert('Instagram login coming soon!')}
             >
               Sign in with Instagram
-            </Button>
+            </button>
             <Button
               variant="ghost"
               size="sm"
