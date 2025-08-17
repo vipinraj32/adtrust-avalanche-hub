@@ -19,6 +19,7 @@ import {
   TrendingUp,
   Calendar
 } from 'lucide-react'
+
 import { useToast } from '@/hooks/use-toast'
 import { Link } from 'react-router-dom'
 
@@ -145,10 +146,10 @@ const InfluencerDashboard = () => {
     }, 3000)
   }
 
-  // Removed wallet connect page. Always show dashboard.
+  // Removed connect wallet page. Always show dashboard.
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-slate-900 dark:via-purple-900/20 dark:to-blue-900/20 relative overflow-hidden">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-slate-900 dark:via-purple-900/20 dark:to-blue-900/20 relative overflow-hidden">
       {/* Floating Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-1/4 w-28 h-16 bg-blue-200/30 dark:bg-blue-400/10 rounded-full blur-xl animate-float" />
@@ -450,7 +451,7 @@ const InfluencerDashboard = () => {
           </TabsContent>
         </Tabs>
       </div>
-    </div>
+  </div>
   )
 }
 

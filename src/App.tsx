@@ -33,7 +33,8 @@ const AppContent = () => {
         <Route path="/advertiser" element={<AdvertiserDashboard />} />
         <Route path="/influencer/login" element={<InfluencerLogin />} />
         <Route path="/influencer/signup" element={<InfluencerSignup />} />
-  <Route path="/influencer" element={<InfluencerDashboard />} />
+  <Route path="/influencer" element={<InfluencerLogin />} />
+  <Route path="/influencer/dashboard" element={<InfluencerDashboard />} />
         <Route path="/disputes" element={<DisputePage />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="/login" element={<Login />} />

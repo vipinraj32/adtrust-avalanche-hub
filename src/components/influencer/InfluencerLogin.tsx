@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { useAuth } from '../../context/AuthContext';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 
 export default function InfluencerLogin() {
+  const { setIsLoggedIn } = useAuth();
   const [form, setForm] = useState({ username: '', password: '' });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -27,8 +29,10 @@ export default function InfluencerLogin() {
       });
       if (!res.ok) throw new Error('Login failed');
       // On success, store influencer login state and go to influencer dashboard
-      localStorage.setItem('influencerLoggedIn', 'true');
-      navigate('/influencer');
+  localStorage.setItem('influencerLoggedIn', 'true');
+  localStorage.setItem('isLoggedIn', 'true');
+  setIsLoggedIn(true);
+  navigate('/influencer/dashboard');
     } catch (err: any) {
       setError(err.message || 'Error occurred');
     } finally {
