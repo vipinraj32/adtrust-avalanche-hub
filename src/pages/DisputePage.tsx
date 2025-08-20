@@ -167,7 +167,20 @@ const DisputePage = () => {
               <CardDescription className="text-slate-600 dark:text-slate-300 mb-6">
                 Connect your wallet to access dispute resolution
               </CardDescription>
-              <Button className="w-full bg-gradient-to-r from-pink-500 to-purple-500 text-white font-semibold py-3 mt-4" onClick={() => window.location.reload()}>
+              <Button
+                className="w-full bg-gradient-to-r from-pink-500 to-purple-500 text-white font-semibold py-3 mt-4"
+                onClick={async () => {
+                  if (window.ethereum) {
+                    try {
+                      await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    } catch (err) {
+                      // handle error if needed
+                    }
+                  } else {
+                    alert('MetaMask is not installed!');
+                  }
+                }}
+              >
                 Connect Wallet
               </Button>
             </CardHeader>
