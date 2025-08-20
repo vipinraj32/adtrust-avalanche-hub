@@ -164,11 +164,13 @@ const DisputePage = () => {
           <Card className="max-w-md mx-auto bg-white/10 dark:bg-white/5 backdrop-blur-md border-white/20 shadow-glow">
             <CardHeader className="text-center">
               <CardTitle className="text-slate-800 dark:text-white">Connect Your Wallet</CardTitle>
-              <CardDescription className="text-slate-600 dark:text-slate-300">
+              <CardDescription className="text-slate-600 dark:text-slate-300 mb-6">
                 Connect your wallet to access dispute resolution
               </CardDescription>
+              <Button className="w-full bg-gradient-to-r from-pink-500 to-purple-500 text-white font-semibold py-3 mt-4" onClick={() => window.location.reload()}>
+                Connect Wallet
+              </Button>
             </CardHeader>
-          
           </Card>
         </div>
       </div>
