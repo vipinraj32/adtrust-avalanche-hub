@@ -1,0 +1,19 @@
+package com.avax.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.avax.bean.Advertiser;
+import com.avax.exception.ResourseNotCreateException;
+import com.avax.repository.AdvertiserRepository;
+@Service
+public class AdvertiserService {
+
+	@Autowired
+	private AdvertiserRepository repository;
+	
+	public Advertiser addAdvertiser(Advertiser advertiser) {
+		Advertiser advertiser2=repository.findById(advertiser.getEmail()).orElseThrow(()-> new ResourseNotCreateException("You are Already register:"+advertiser.getEmail()));
+		return repository.save(advertiser);
+	}
+}

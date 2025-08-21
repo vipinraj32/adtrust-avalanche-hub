@@ -1,0 +1,32 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          facebook:
+            client-id: 1467673830833269
+            client-secret: 05a67b4bc0194d7ec21ca04fb4eb165c
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope: email,public_profile
+            client-authentication-method: client_secret_post
+            authorization-grant-type: authorization_code
+            provider: facebook
+          instagram:
+            client-id: YOUR_INSTAGRAM_CLIENT_ID
+            client-secret: YOUR_INSTAGRAM_CLIENT_SECRET
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope: user_profile,user_media
+            client-authentication-method: client_secret_post
+            authorization-grant-type: authorization_code
+            provider: instagram
+        provider:
+          facebook:
+            authorization-uri: https://www.facebook.com/v15.0/dialog/oauth?
+            token-uri: https://graph.facebook.com/v15.0/oauth/access_token
+            user-info-uri: https://graph.facebook.com/me?fields=id,name,email,picture
+            user-name-attribute: id
+          instagram:
+            authorization-uri: https://api.instagram.com/oauth/authorize
+            token-uri: https://api.instagram.com/oauth/access_token
+            user-info-uri: https://graph.instagram.com/me?fields=id,username,account_type
+            user-name-attribute: id

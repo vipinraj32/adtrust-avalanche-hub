@@ -1,0 +1,27 @@
+spring.application.name=AvaxTrust
+#This Configuration Are Databse
+spring.datasource.url=jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DB:avaxTrust}
+spring.datasource.username={user_name:root}
+spring.datasource.password={user_password:vipin}
+server.port=8081
+spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true           
+
+
+
+#File related all Confugration
+spring.servlet.multipart.max-file-size=1000MB
+spring.servlet.multipart.max-request-size=1000MB
+spring.servlet.multipart.enabled=true
+project.manager=D:/Video/
+#send mail Configuration
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username={email_username}
+spring.mail.password={emnai_password}
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+#Raxorpay conf
+razorpay.key.id={razorpay_id}
+razorpay.key.secret={razorpay_kry}

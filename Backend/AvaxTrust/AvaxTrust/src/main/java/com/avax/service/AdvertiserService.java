@@ -1,0 +1,33 @@
+package com.avax.service;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.avax.bean.Advertiser;
+import com.avax.bean.User;
+import com.avax.exception.ResourceNotFoundException;
+import com.avax.exception.ResourseNotCreateException;
+import com.avax.repository.AdvertiserRepository;
+@Service
+public class AdvertiserService {
+
+	@Autowired
+	private AdvertiserRepository repository;
+	
+	public Advertiser addAdvertiser(Advertiser advertiser) {
+		Advertiser advertiser2=repository.findById(advertiser.getEmail()).orElse(null);
+		if(advertiser2!=null)
+			throw new ResourseNotCreateException("You are Already register:"+advertiser.getEmail());
+		return repository.save(advertiser);
+	}
+	
+	public Advertiser login(String email, String password) {
+		Advertiser advertiser =repository.findById(email).orElseThrow(()->new ResourceNotFoundException("User Not found !!"));
+		if(!advertiser.getPassword().equals(password)) {
+			throw new ResourceNotFoundException("User Not Found!!");
+		}
+		return advertiser;
+	}
+}

@@ -1,0 +1,5 @@
+package com.avax.config;
+
+public class SecurityConfig {
+
+}

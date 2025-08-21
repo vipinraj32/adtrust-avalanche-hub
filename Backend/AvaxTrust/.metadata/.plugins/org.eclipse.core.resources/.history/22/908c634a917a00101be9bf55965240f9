@@ -1,0 +1,5 @@
+package com.avax.exception;
+
+public class ResourseNotCreateException {
+
+}

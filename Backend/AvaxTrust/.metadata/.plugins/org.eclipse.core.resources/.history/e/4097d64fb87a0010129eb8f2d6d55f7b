@@ -1,0 +1,35 @@
+package com.avax.service;
+
+import java.lang.foreign.Linker.Option;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.avax.bean.User;
+import com.avax.exception.ResourceNotFoundException;
+import com.avax.exception.ResourseNotCreateException;
+import com.avax.repository.UserRespository;
+@Service
+public class UserService {
+	
+	@Autowired
+	private UserRespository respository;
+	
+	public User addUser(User user) {
+		User usersOptional=respository.findById(user.getUsername()).orElse(null);
+		if(usersOptional!=null) {
+			throw new  ResourseNotCreateException("Candidate with username:"+user.getUsername()+"Already Exist");
+		}
+		return respository.save(user);
+	}
+	
+	public User login(String username, String password) {
+		User user=respository.findById(username).orElseThrow(()->new ResourceNotFoundException("User Not found !!"));
+		if(!user.getPassword().equals(password)) {
+			throw new ResourceNotFoundException("User Not Found!!");
+		}
+		return user;
+	}
+
+}
