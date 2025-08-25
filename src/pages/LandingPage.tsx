@@ -198,7 +198,7 @@ const LandingPage = () => {
             Ready to Transform Your Marketing?
           </h2>
           <p className="text-xl text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto">
-            Join thousands of advertisers and influencers building the future of marketing on Web3
+            Join thousands of advertisers and influencers building the future of marketing
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/advertiser">

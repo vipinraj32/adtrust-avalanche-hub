@@ -33,6 +33,7 @@ public class UserController {
     public ResponseEntity<User> getUserInfo(@RequestParam("username")String username, @RequestParam("password")String password) {
         return ResponseEntity.status(HttpStatus.OK).body(service.login(username, password));
     }
+    
 }
 
 
