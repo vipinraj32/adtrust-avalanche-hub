@@ -421,7 +421,7 @@ const InfluencerDashboard = () => {
                         <li>• Accurate timestamp of publication</li>
                         <li>• Content must meet campaign requirements</li>
                         <li>• Proof will be stored on IPFS</li>
-                        <li>• Verification process may take 24-48 hours</li>
+                        <li>• Verification process may take 7 days</li>
                       </ul>
                     </CardContent>
                   </Card>
