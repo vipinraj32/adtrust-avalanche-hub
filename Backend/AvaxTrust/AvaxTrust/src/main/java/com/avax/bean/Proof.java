@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-class Proof {
+public class Proof {
     @Id
     private String videoUrl;
     private Date dateUpload;
