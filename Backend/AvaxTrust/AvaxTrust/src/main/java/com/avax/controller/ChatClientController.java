@@ -5,19 +5,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 class ChatClientController {
 
-     @Autowired
-      private final ChatClient chatClient;
+    //  @Autowired
+    //   private final ChatClient chatClient;
 
-       public ChatClientController(ChatClient.Builder chatClientBuilder) {
-        this.chatClient = chatClientBuilder.build();
-    }
+    //    public ChatClientController(ChatClient.Builder chatClientBuilder) {
+    //     this.chatClient = chatClientBuilder.build();
+    // }
 
-      @GetMapping("/ai")
-    String generation(String userInput) {
-        return this.chatClient.prompt()
-            .user(userInput)
-            .call()
-            .content();
-    }
+    //   @GetMapping("/ai")
+    // String generation(String userInput) {
+    //     return this.chatClient.prompt()
+    //         .user(userInput)
+    //         .call()
+    //         .content();
+    // }
 
 }
