@@ -47,7 +47,7 @@ public class UserController {
 	        		+ "Thank you for being with us!\r\n"
 	        		+ "\r\n"
 	        		+ "Best regards,\r\n"
-	        		+ "Thinkedge";
+	        		+ "Avax Trust Team";
 	        emailService.sendEmail(user2.getUsername(),subject ,text);
         return ResponseEntity.status(HttpStatus.OK).body(user2);
     }
