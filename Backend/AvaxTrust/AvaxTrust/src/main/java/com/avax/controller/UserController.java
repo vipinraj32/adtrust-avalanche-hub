@@ -32,7 +32,13 @@ public class UserController {
 	@PostMapping	("/signup")
     public ResponseEntity<User> getUserInfo(@RequestBody @Valid User user) {
           User user2= service.addUser(user);
-          String subject="Successful Login to Your Account";
+         
+        return ResponseEntity.status(HttpStatus.OK).body(user2);
+    }
+	
+	@PostMapping("/login")
+    public ResponseEntity<User> getUserInfo(@RequestParam("username")String username, @RequestParam("password")String password) {
+		 String subject="Successful Login to Your Account";
 	        LocalDateTime dateTime = LocalDateTime.now();
 	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 
@@ -49,11 +55,6 @@ public class UserController {
 	        		+ "Best regards,\r\n"
 	        		+ "Avax Trust Team";
 	        emailService.sendEmail(user2.getUsername(),subject ,text);
-        return ResponseEntity.status(HttpStatus.OK).body(user2);
-    }
-	
-	@PostMapping("/login")
-    public ResponseEntity<User> getUserInfo(@RequestParam("username")String username, @RequestParam("password")String password) {
         return ResponseEntity.status(HttpStatus.OK).body(service.login(username, password));
     }
     
